@@ -1,4 +1,4 @@
- 
+
 local Library = loadstring(game:HttpGetAsync("https://github.com/1dontgiveaf/Fluent-Renewed/releases/download/v1.0/Fluent.luau"))()
 local SaveManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/1dontgiveaf/Fluent-Renewed/refs/heads/main/Addons/SaveManager.luau"))()
 local InterfaceManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/1dontgiveaf/Fluent-Renewed/refs/heads/main/Addons/InterfaceManager.luau"))()
@@ -54,11 +54,21 @@ Tabs.Main:CreateButton({Title = "Copy Job ID", Callback = function() setclipboar
 Tabs.Main:CreateButton({Title = "Copy HWID", Callback = function() setclipboard(rbxservice:GetClientId()) end})
 Tabs.Main:CreateButton({Title = "Copy SID", Callback = function() setclipboard(rbxservice:GetSessionId()) end})
 --{COMBAT TAB}
+
+Tabs.Combat:AddParagraph({Title = "Combat",Content = "Combat Tab.\nCombat Tab"})
+
 local killauratoggle = Tabs.Combat:CreateToggle("killauratoggle", { Title = "Kill Aura", Default = false })
 local killaurarangeslider = Tabs.Combat:CreateSlider("killaurarange", { Title = "Range", Min = 1, Max = 9, Rounding = 1, Default = 5 })
 local katargetcountdropdown = Tabs.Combat:CreateDropdown("katargetcountdropdown", { Title = "Max Targets", Values = { "1", "2", "3", "4", "5", "6" }, Default = "1" })
 local kaswingcooldownslider = Tabs.Combat:CreateSlider("kaswingcooldownslider", { Title = "Attack Cooldown (s)", Min = 0.01, Max = 1.01, Rounding = 2, Default = 0.1 })
---{MAP TAB}
+
+Tabs.Combat:AddParagraph({Title = "Auto Heal",Content = "Auto Heal.\nAuto Heal"})
+
+local AutoHealToggle = Tabs.Combat:CreateToggle("AutoHealToggle", { Title = "Auto Heal", Default = false })
+local HealPercent = Tabs.Combat:CreateSlider("HealPercent", { Title = "Heal at", Min = 1, Max = 100, Rounding = 2, Default = 0.1 })
+
+--{MAP TAB}     
+
 local resourceauratoggle = Tabs.Map:CreateToggle("resourceauratoggle", { Title = "Resource Aura", Default = false })
 local resourceaurarange = Tabs.Map:CreateSlider("resourceaurarange", { Title = "Range", Min = 1, Max = 20, Rounding = 1, Default = 20 })
 local resourcetargetdropdown = Tabs.Map:CreateDropdown("resourcetargetdropdown", { Title = "Max Targets", Values = { "1", "2", "3", "4", "5", "6" }, Default = "1" })
@@ -87,6 +97,7 @@ Tabs.Farming:CreateParagraph("Aligned Paragraph", {Title = "Tween Stuff", Conten
 local tweenplantboxtoggle = Tabs.Farming:AddToggle("tweentoplantbox", { Title = "Tween to Plant Box", Default = false })
 local tweenbushtoggle = Tabs.Farming:AddToggle("tweentobush", { Title = "Tween to Bush + Plant Box", Default = false })
 local tweenrangeslider = Tabs.Farming:AddSlider("tweenrange", { Title = "Range", Min = 1, Max = 250, Rounding = 1, Default = 250 })
+
 Tabs.Farming:CreateParagraph("Aligned Paragraph", {Title = "Plantbox Stuff", Content = "wish this ui was more like linoria :(", TitleAlignment = "Middle", ContentAlignment = Enum.TextXAlignment.Center})
 Tabs.Farming:CreateButton({Title = "Place 16x16 Plantboxes (256)", Callback = function() placestructure(16) end })
 Tabs.Farming:CreateButton({Title = "Place 15x15 Plantboxes (225)", Callback = function() placestructure(15) end })
@@ -718,4 +729,3 @@ Library:Notify{
     Duration = 8
 }
 SaveManager:LoadAutoloadConfig()
-
