@@ -55,15 +55,11 @@ Tabs.Main:CreateButton({Title = "Copy HWID", Callback = function() setclipboard(
 Tabs.Main:CreateButton({Title = "Copy SID", Callback = function() setclipboard(rbxservice:GetSessionId()) end})
 --{COMBAT TAB}
 
-Tabs.Combat:AddParagraph({Title = "Combat",Content = "Combat Tab.\nCombat Tab"})
 
 local killauratoggle = Tabs.Combat:CreateToggle("killauratoggle", { Title = "Kill Aura", Default = false })
 local killaurarangeslider = Tabs.Combat:CreateSlider("killaurarange", { Title = "Range", Min = 1, Max = 9, Rounding = 1, Default = 5 })
 local katargetcountdropdown = Tabs.Combat:CreateDropdown("katargetcountdropdown", { Title = "Max Targets", Values = { "1", "2", "3", "4", "5", "6" }, Default = "1" })
 local kaswingcooldownslider = Tabs.Combat:CreateSlider("kaswingcooldownslider", { Title = "Attack Cooldown (s)", Min = 0.01, Max = 1.01, Rounding = 2, Default = 0.1 })
-
-Tabs.Combat:AddParagraph({Title = "Auto Heal",Content = "Auto Heal.\nAuto Heal"})
-
 local AutoHealToggle = Tabs.Combat:CreateToggle("AutoHealToggle", { Title = "Auto Heal", Default = false })
 local HealPercent = Tabs.Combat:CreateSlider("HealPercent", { Title = "Heal at", Min = 1, Max = 100, Rounding = 2, Default = 0.1 })
 
