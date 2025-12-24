@@ -62,7 +62,7 @@ local katargetcountdropdown = Tabs.Combat:CreateDropdown("katargetcountdropdown"
 local kaswingcooldownslider = Tabs.Combat:CreateSlider("kaswingcooldownslider", { Title = "Attack Cooldown (s)", Min = 0.01, Max = 1.01, Rounding = 2, Default = 0.1 })
 local AutoHealToggle = Tabs.Combat:CreateToggle("AutoHealToggle", { Title = "Auto Heal", Default = false })
 local HealPercent = Tabs.Combat:CreateSlider("HealPercent", { Title = "Heal at", Min = 1, Max = 100, Rounding = 2, Default = 0.1 })
-
+local HealFruitDropDown = Tabs.Farming:CreateDropdown("HealFruitDropDown", {Title = "Select Fruit to eat",Values = {"Bloodfruit", "Bluefruit", "Lemon", "Coconut", "Jelly", "Banana", "Orange", "Oddberry", "Berry", "Strangefruit", "Strawberry", "Sunjfruit", "Pumpkin", "Prickly Pear", "Apple",  "Barley", "Cloudberry", "Carrot"}, Default = "Bloodfruit"})
 --{MAP TAB}     
 
 local resourceauratoggle = Tabs.Map:CreateToggle("resourceauratoggle", { Title = "Resource Aura", Default = false })
@@ -184,6 +184,12 @@ end
 local function swingtool(tspmogngicl)
     if packets.SwingTool and packets.SwingTool.send then
         packets.SwingTool.send(tspmogngicl)
+    end
+end
+
+local function Eating(SelectED)
+    if packets.UseBagItem and packets.UseBagItem.send then
+        packets.UseBagItem.send(Object)
     end
 end
 
@@ -312,6 +318,23 @@ task.spawn(function()
 
         task.wait(cooldown)
     end
+end)
+
+task.spawn(function()
+   while true do 
+      if not Options.AutoHealToggle.Value then
+          task.wait(0.1)
+          continue
+      end
+
+    local HPPERCENT = Options.HealPercent.Value 
+    local SelectedFruit = Options.HealFruitDropDown.Value or "BloodFruit"
+    
+    if plr.Character:FindFirstChild("Humanoid").Health > 0 then
+       Eating(SelectedFruit)
+    end
+    task.wait(1)
+   end
 end)
 
 task.spawn(function()
