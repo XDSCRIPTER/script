@@ -340,8 +340,8 @@ task.spawn(function()
           task.wait(0.1)
           continue
       end
-    
-    if plr.Character:FindFirstChild("Humanoid").Health > 0 and plr.Character:FindFirstChild("Humanoid").Health <= Options.HealPercent.Value then
+    print(Options.HealPercent.Value)
+    if plr.Character:FindFirstChild("Humanoid").Health > 0 and not plr.Character:FindFirstChild("Humanoid").Health >= Options.HealPercent.Value then
        Eating(Options.HealFruitDropDown.Value)
     end
 
