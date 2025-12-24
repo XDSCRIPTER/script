@@ -63,7 +63,7 @@ local killaurarangeslider = Tabs.Combat:CreateSlider("killaurarange", { Title = 
 local katargetcountdropdown = Tabs.Combat:CreateDropdown("katargetcountdropdown", { Title = "Max Targets", Values = { "1", "2", "3", "4", "5", "6" }, Default = "1" })
 local kaswingcooldownslider = Tabs.Combat:CreateSlider("kaswingcooldownslider", { Title = "Attack Cooldown (s)", Min = 0.01, Max = 1.01, Rounding = 2, Default = 0.1 })
 local AutoHealToggle = Tabs.Combat:CreateToggle("AutoHealToggle", { Title = "Auto Heal", Default = false })
-local HealPercent = Tabs.Combat:CreateSlider("HealPercent", { Title = "Heal at", Min = 1, Max = 100, Rounding = 2, Default = 0.1 })
+local HealPercent = Tabs.Combat:CreateSlider("HealPercent", { Title = "Heal to", Min = 1, Max = 100, Rounding = 2, Default = 0.1 })
 local HealColdown = Tabs.Combat:CreateSlider("HealColdown", { Title = "Use Cooldown", Min = 0.01, Max = 1, Rounding = 2, Default = 0.1 })
 local HealFruitDropDown = Tabs.Combat:CreateDropdown("HealFruitDropDown", {Title = "Select Fruit to eat",Values = {"Bloodfruit", "Bluefruit", "Lemon", "Coconut", "Jelly", "Banana", "Orange", "Oddberry", "Berry", "Strangefruit", "Strawberry", "Sunjfruit", "Pumpkin", "Prickly Pear", "Apple",  "Barley", "Cloudberry", "Carrot"}, Default = "Bloodfruit"})
 --{MAP TAB}     
@@ -340,11 +340,8 @@ task.spawn(function()
           task.wait(0.1)
           continue
       end
-
-    local HPPERCENT = Options.HealPercent.Value 
     
-    
-    if plr.Character:FindFirstChild("Humanoid").Health > 0 and not plr.Character:FindFirstChild("Humanoid").Health >= HPPERCENT then
+    if plr.Character:FindFirstChild("Humanoid").Health > 0 and plr.Character:FindFirstChild("Humanoid").Health <= Options.HealPercent.Value then
        Eating(Options.HealFruitDropDown.Value)
     end
 
