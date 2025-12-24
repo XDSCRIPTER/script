@@ -199,6 +199,7 @@ local function Eating(itemname)
            if packets.UseBagItem and packets.UseBagItem.send then
                print(itemname,  'Selected fruit')
                packets.UseBagItem.send(child.LayoutOrder)
+               print(child.LayoutOrder)
            end
        end
     end
@@ -218,6 +219,7 @@ local function drop(itemname)
         if child:IsA("ImageLabel") and child.Name == itemname then
             if packets and packets.DropBagItem and packets.DropBagItem.send then
                 packets.DropBagItem.send(child.LayoutOrder)
+                print(child.LayoutOrder)
             end
         end
     end
@@ -339,10 +341,9 @@ task.spawn(function()
       end
 
     local HPPERCENT = Options.HealPercent.Value 
-   
+    
     
     if plr.Character:FindFirstChild("Humanoid").Health > 0 then
-       print(Options.HealFruitDropDown.Value,  'Selected fruit')
        Eating(Options.HealFruitDropDown.Value)
     end
     task.wait(1)
