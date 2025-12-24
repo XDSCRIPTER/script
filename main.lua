@@ -3,6 +3,8 @@ local Library = loadstring(game:HttpGetAsync("https://github.com/1dontgiveaf/Flu
 local SaveManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/1dontgiveaf/Fluent-Renewed/refs/heads/main/Addons/SaveManager.luau"))()
 local InterfaceManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/1dontgiveaf/Fluent-Renewed/refs/heads/main/Addons/InterfaceManager.luau"))()
  
+--loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/XDSCRIPTER/script/refs/heads/main/main.lua"))()
+
 local Window = Library:CreateWindow{
     Title = "Private Weed Hub -- Booga Booga Reborn",
     SubTitle = "by Crack Dealer",
@@ -189,7 +191,7 @@ end
 
 local function Eating(SelectED)
     if packets.UseBagItem and packets.UseBagItem.send then
-        packets.UseBagItem.send(Object)
+        packets.UseBagItem.send(SelectED)
     end
 end
 
@@ -328,7 +330,7 @@ task.spawn(function()
       end
 
     local HPPERCENT = Options.HealPercent.Value 
-    local SelectedFruit = Options.HealFruitDropDown.Value or "BloodFruit"
+    local SelectedFruit = Options.HealFruitDropDown.Value or "Bloodfruit"
     
     if plr.Character:FindFirstChild("Humanoid").Health > 0 then
        Eating(SelectedFruit)
