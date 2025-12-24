@@ -197,7 +197,7 @@ local function Eating(itemname)
     for _, child in ipairs(inventory:GetChildren()) do
         if child:IsA("ImageLabel") and child.Name == itemname then
            if packets.UseBagItem and packets.UseBagItem.send then
-               print(itemname)
+               print(itemname,  'Selected fruit')
                packets.UseBagItem.send(itemname)
            end
        end
