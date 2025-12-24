@@ -198,7 +198,7 @@ local function Eating(itemname)
         if child:IsA("ImageLabel") and child.Name == itemname then
            if packets.UseBagItem and packets.UseBagItem.send then
                print(itemname)
-               packets.UseBagItem.send(35)
+               packets.UseBagItem.send(itemname)
            end
        end
     end
@@ -339,11 +339,11 @@ task.spawn(function()
       end
 
     local HPPERCENT = Options.HealPercent.Value 
-    local SelectedFruit = Options.HealFruitDropDown.Value or "Bloodfruit"
+   
     
     if plr.Character:FindFirstChild("Humanoid").Health > 0 then
-       print(selectedfruit)
-       Eating(SelectedFruit)
+       print(Options.HealFruitDropDown.Value,  'Selected fruit')
+       Eating(Options.HealFruitDropDown.Value)
     end
     task.wait(1)
    end
