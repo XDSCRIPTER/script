@@ -3,7 +3,7 @@ local Library = loadstring(game:HttpGetAsync("https://github.com/1dontgiveaf/Flu
 local SaveManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/1dontgiveaf/Fluent-Renewed/refs/heads/main/Addons/SaveManager.luau"))()
 local InterfaceManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/1dontgiveaf/Fluent-Renewed/refs/heads/main/Addons/InterfaceManager.luau"))()
  
---loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/XDSCRIPTER/script/refs/heads/main/main.lua"))()
+--loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/XDSCRIPTER/script/refs/heads/main/main2.lua"))()
 
 local Window = Library:CreateWindow{
     Title = "Private Weed Hub -- Booga Booga Reborn",
@@ -197,7 +197,8 @@ local function Eating(itemname)
     for _, child in ipairs(inventory:GetChildren()) do
         if child:IsA("ImageLabel") and child.Name == itemname then
            if packets.UseBagItem and packets.UseBagItem.send then
-               packets.UseBagItem.send(itemname)
+               print(itemname)
+               packets.UseBagItem.send(35)
            end
        end
     end
