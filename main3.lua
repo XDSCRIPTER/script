@@ -3,7 +3,7 @@ local Library = loadstring(game:HttpGetAsync("https://github.com/1dontgiveaf/Flu
 local SaveManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/1dontgiveaf/Fluent-Renewed/refs/heads/main/Addons/SaveManager.luau"))()
 local InterfaceManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/1dontgiveaf/Fluent-Renewed/refs/heads/main/Addons/InterfaceManager.luau"))()
  
---loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/XDSCRIPTER/script/refs/heads/main/main2.lua"))()
+--loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/XDSCRIPTER/script/refs/heads/main/main3.lua"))()
 
 local Window = Library:CreateWindow{
     Title = "Private Weed Hub -- Booga Booga Reborn",
@@ -64,6 +64,7 @@ local katargetcountdropdown = Tabs.Combat:CreateDropdown("katargetcountdropdown"
 local kaswingcooldownslider = Tabs.Combat:CreateSlider("kaswingcooldownslider", { Title = "Attack Cooldown (s)", Min = 0.01, Max = 1.01, Rounding = 2, Default = 0.1 })
 local AutoHealToggle = Tabs.Combat:CreateToggle("AutoHealToggle", { Title = "Auto Heal", Default = false })
 local HealPercent = Tabs.Combat:CreateSlider("HealPercent", { Title = "Heal at", Min = 1, Max = 100, Rounding = 2, Default = 0.1 })
+local HealColdown = Tabs.Combat:CreateSlider("HealColdown", { Title = "Use Cooldown", Min = 0.01, Max = 1, Rounding = 2, Default = 0.1 })
 local HealFruitDropDown = Tabs.Combat:CreateDropdown("HealFruitDropDown", {Title = "Select Fruit to eat",Values = {"Bloodfruit", "Bluefruit", "Lemon", "Coconut", "Jelly", "Banana", "Orange", "Oddberry", "Berry", "Strangefruit", "Strawberry", "Sunjfruit", "Pumpkin", "Prickly Pear", "Apple",  "Barley", "Cloudberry", "Carrot"}, Default = "Bloodfruit"})
 --{MAP TAB}     
 
@@ -343,10 +344,12 @@ task.spawn(function()
     local HPPERCENT = Options.HealPercent.Value 
     
     
-    if plr.Character:FindFirstChild("Humanoid").Health > 0 then
+    if plr.Character:FindFirstChild("Humanoid").Health > 0 and not plr.Character:FindFirstChild("Humanoid").Health >= HPPERCENT then
        Eating(Options.HealFruitDropDown.Value)
     end
-    task.wait(1)
+
+    task.wait(Options.HealColdown.Value)
+
    end
 end)
 
