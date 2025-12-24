@@ -198,7 +198,7 @@ local function Eating(itemname)
         if child:IsA("ImageLabel") and child.Name == itemname then
            if packets.UseBagItem and packets.UseBagItem.send then
                print(itemname,  'Selected fruit')
-               packets.UseBagItem.send(itemname)
+               packets.UseBagItem.send(child.LayoutOrder)
            end
        end
     end
